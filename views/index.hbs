@@ -1,0 +1,62 @@
+<!-- index.hbs -->
+<h1>The server is running!</h1>
+<p>If you see this text, the server is <strong>definitely</strong> working!</p>
+
+<!-- Create a table -->
+<table id="products-table">
+    <!-- Header section -->
+    <thead>
+        <!-- Define the table headers based on your product entity attributes -->
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Quantity in Stock</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+
+    <!-- Body section -->
+    <tbody>
+        <!-- Iterate over the product data and display each product -->
+        {{#each data}}
+        <tr>
+            <td>{{this.productID}}</td>
+            <td>{{this.productName}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.unitPrice}}</td>
+            <td>{{this.quantityInStock}}</td>
+            <td>{{this.category}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add a new product to the Products table --}}
+<h2>Add a New Product</h2>
+<p>To add a new product, please enter the product details below and click 'Submit'!</p>
+<form id="add-product-form-ajax">
+    <label for="product-name">Product Name: </label>
+    <input type="text" name="product-name" id="product-name">
+    
+    <label for="product-description">Description: </label>
+    <textarea name="product-description" id="product-description" rows="4"></textarea>
+
+    <label for="product-price">Unit Price: </label>
+    <input type="number" step="0.01" name="product-price" id="product-price">
+
+    <label for="product-quantity">Quantity in Stock: </label>
+    <input type="number" name="product-quantity" id="product-quantity">
+
+    <label for="product-supplier">Supplier ID: </label>
+    <input type="number" name="product-supplier" id="product-supplier">
+
+    <label for="product-category">Category: </label>
+    <input type="text" name="product-category" id="product-category">
+
+    <input type="submit" value="Submit">
+</form>
+
+{{!-- Embed JavaScript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_product.js"></script>
